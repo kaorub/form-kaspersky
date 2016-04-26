@@ -5,17 +5,73 @@
   <title>Form</title>
   <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
   <div class="container">
-    <div class="main-wrapper">
-      <div class="input-wrapper">
-        <input class="input-form">
-      </div>
-      <div class="button-wrapper">
-        <button class="button-form"></buttton>
+    <form id="main" name="main" class="main-wrapper">
+      <div id="input-wrapper" class="input-wrapper">
+        <input type="text" id="input" class="input-form">
+      </div><div class="button-wrapper">
+        <button id="button" type="submit" class="button-form"></buttton>
       </div>
     </div>
   </div>
+  <script type="text/javascipt" src="./form.js"></script>
+  <script type="text/javascipt" src="./curvycorners.js"></script>
+  <script type="text/javascript">
+    var json = {
+      "languages": [
+        {
+          "name": "ru",
+          "text": "Приветственная кнопка",
+          "rtl": false
+        }
+        , {
+          "name": "en",
+          "text": "Greeting",
+          "rtl": false
+        }
+        , {
+          "name": "he",
+          "text": "היי",
+          "rtl": true
+        }
+      ]
+    }
+    var button = document.getElementById('button');
+    button.addEventListener(window, 'load', initCorners);
+    function initCorners() {
+      var settings = {
+        tl: { radius: 4 },
+        tr: { radius: 4 },
+        bl: { radius: 4 },
+        br: { radius: 4 },
+        antiAlias: true
+      }
+      curvyCorners(settings, "#button");
+    }
+    var button_style = document.getElementById('button').style;
+
+    var input = document.getElementById('input-wrapper');
+    
+    var languages = json.languages;
+    for (var i=0; i<languages.length; i++) {
+      button.innerHTML = languages[i].text;
+      if (languages[i].rtl) {
+        button_style.direction = "rtl";
+      }
+    }
+
+    var button_width = button.offsetWidth;
+    var main_width = document.getElementById('main').offsetWidth;
+    var button_percentage = button_width/main_width;
+        button_percentage = button_percentage * 100; //.toFixed(2) * 100
+    var offset_percentage = 15/main_width;
+        offset_percentage = offset_percentage * 100;
+
+    var input_percentage = 100 - button_percentage - offset_percentage;
+    input.style = "width: " + input_percentage + "%;";
+  </script>
 </body>
 </html>

@@ -1,12 +1,17 @@
+$width_x;
+$width_y;
+$width_x + $width_y + 15px = 100%;
+
 body {
 	width: 100%;
 }
 .container {
 	overflow: hidden;
+	/*min-width: 960px;*/
 }
-.main-wrpapper {
+.main-wpapper {
 	width: 100%;
-	position: relative;
+	/*position: relative;*/
 	min-width: 960px;
 	max-width: 1600px;
 	margin: 0 auto;
@@ -15,30 +20,42 @@ body {
 }
 .input-wrapper {
 	position: relative;
-	margin: 0 15px 0 0;
-	padding: 0;
-	padding-right: 115px;
-	line-height: 25px;
+	display:inline-block;
+	/*width: calc(100% - 15px - 6% + 2px);*/
+	/*float: left;*/
+	/*line-height: 25px;*/
+	font-size: 0;
 }
 .input-wrapper input{
-	clear: both;
+	font-size: 12px;
+	/*clear: both;*/
+	padding: 0;
 	width: 100%;
 	height: 30px;
-	margin: 0;
-	border: 1px solid black;
-	padding: 0;
+	border: 1px solid #878787;
+	/*padding: 0;*/
 }
 .button-wrapper {
 	height: 30px;
+	margin-left: 15px;
+	padding: 0;
 	position: absolute;
-	top: 0;
 	right: 0;
-	float: left;
-	line-height: 25px;
+	/*float: right;*/
+	/*line-height: 25px;*/
+	display: inline-block;
+	font-size: 0;
 }
 .button-wrapper button {
+	font-size: 12px;
 	height: 32px;
-	width: 100px;
+	width: 100%;
 	margin: 0;
-	border: 1px solid black;
+	border: 1px solid #C0C0C0;
+	direction: rtl;
+	-moz-border-radius:  5px; /* Firefox */
+	-webkit-border-radius:  5px; /* Safari 4 */
+	border-radius:  5px; /* IE 9, Safari 5, Chrome */
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFFFFF), to(#D0D0D0));
+	/*background: -webkit-gradient(linear, 0 0, 0 100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #5BC9E1));*/
 }
