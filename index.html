@@ -11,14 +11,15 @@
   <div class="container">
     <form id="main" name="main" class="main-wrapper">
       <div id="input-wrapper" class="input-wrapper">
-        <input type="text" id="input" class="input-form">
+        <input type="text" id="input" class="input-form" />
       </div><div class="button-wrapper">
         <button id="button" type="submit" class="button-form"></buttton>
       </div>
-    </div>
+    </form>
   </div>
-  <script type="text/javascipt" src="./form.js"></script>
+  
   <script type="text/javascipt" src="./curvycorners.js"></script>
+   <!-- // <script type="text/javascipt" src="./form.js"></script> -->
   <script type="text/javascript">
     var json = {
       "languages": [
@@ -40,7 +41,12 @@
       ]
     }
     var button = document.getElementById('button');
-    button.addEventListener(window, 'load', initCorners);
+    if (button.addEventListener) {
+      button.addEventListener(window, 'load', initCorners);
+    } else if (button.attachEvent)  {
+      button.attachEvent('onload', initCorners);
+    }
+    
     function initCorners() {
       var settings = {
         tl: { radius: 4 },
@@ -53,7 +59,7 @@
     }
     var button_style = document.getElementById('button').style;
 
-    var input = document.getElementById('input-wrapper');
+    var input_wrapper = document.getElementById('input-wrapper');
     
     var languages = json.languages;
     for (var i=0; i<languages.length; i++) {
@@ -71,7 +77,10 @@
         offset_percentage = offset_percentage * 100;
 
     var input_percentage = 100 - button_percentage - offset_percentage;
-    input.style = "width: " + input_percentage + "%;";
+    input_wrapper.style.width = input_percentage + "%"
+    // if (input_wrapper.style)
+      // input_wrapper.style = "width: " + input_percentage + "%;"
+
   </script>
 </body>
 </html>
